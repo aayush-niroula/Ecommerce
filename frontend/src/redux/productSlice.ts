@@ -10,10 +10,13 @@ interface Product{
   price: number
 }
 interface ProductState{
-    products:Product[]
+    products:Product[],
+    selectedProduct: Product | null
+   
 }
 const initialState:ProductState={
-    products:[]
+    products:[],
+    selectedProduct:null,
 }
 export const productSlice = createSlice({
    name:'product',
@@ -21,12 +24,15 @@ export const productSlice = createSlice({
    reducers:{
     setAllProducts:(state,action:PayloadAction<Product[]>)=>{
       state.products = action.payload
+    },
+    selectProduct:(state,action:PayloadAction<Product>)=>{
+       state.selectedProduct =action.payload 
     }
    }
 
 })
 
-export const { setAllProducts } = productSlice.actions;
+export const { setAllProducts,selectProduct } = productSlice.actions;
 
 // Export the reducer
 export default productSlice.reducer;

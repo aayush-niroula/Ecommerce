@@ -4,6 +4,8 @@ import { userRoutes } from "./routes/user.routes.js";
 import { productRoutes } from "./routes/product.routes.js";
 import { categoryRoutes } from "./routes/category.routes.js";
 import cors from 'cors'
+import { reviewRoute } from "./routes/reviews.routes.js";
+import { cartRoutes } from "./routes/cart.routes.js";
 dotenv.config({})
 const app= express()
 
@@ -23,3 +25,5 @@ app.listen(process.env.PORT,()=>{
 app.use('/api/v1/user',userRoutes)
 app.use('/api/v1/product',productRoutes)
 app.use('/api/v1/category',categoryRoutes)
+app.use('/api/v1/review',reviewRoute)
+app.use('/api/v1/cart',cartRoutes)

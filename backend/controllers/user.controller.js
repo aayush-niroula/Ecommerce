@@ -98,6 +98,25 @@ export const signupUser = async (req, res) => {
             
         }
     }
+    export const getUsers=async (req,res) => {
+       try {
+        const users=await prisma.user.findMany({
+          orderBy:{
+            createdAt:"desc"
+          },
+          include:{
+            reviews:true
+          }
+        })
+        return res.status(200).json({
+          message:"User fetched successfully",
+          users
+        })
+       } catch (error) {
+        console.log(error);
+        
+       }
+    }
     
     export const deleteUser = async (req, res) => {
         try {
